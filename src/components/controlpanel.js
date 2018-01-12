@@ -11,8 +11,8 @@ class Controlpanel extends Component{
                                                                     name={ing.name} 
                                                                     uprice={ing.uprice} 
                                                                     quant={ing.quant} 
-                                                                    handleAdd={this.props.handleAdd(ing.id)} 
-                                                                    handleRemove={this.props.handleRemove(ing.id)}/>)
+                                                                    handleAdd={()=>this.props.handleAdd(ing.id)} 
+                                                                    handleRemove={()=>this.props.handleRemove(ing.id)}/>)
       
       return (
           <Aux>  
