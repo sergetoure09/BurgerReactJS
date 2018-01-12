@@ -4,7 +4,8 @@ import classes from '../ingredient.css'
 class Plate extends Component{
     render(){
         return(
-        <div class={classes.plate}></div>
+        <div className={classes.plate}>
+        </div>
     )
     }
 }

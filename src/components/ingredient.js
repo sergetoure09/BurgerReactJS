@@ -5,7 +5,7 @@ import classes from '../ingredient.css'
 export class Tomato extends Component{
     render(){
         return(
-        <div class={classes.tomato}></div>
+        <div className={classes.tomato}></div>
     )
     }
 }
@@ -14,35 +14,35 @@ export class Tomato extends Component{
 export class Pickle extends Component{
     render(){
         return(
-        <div class={classes.pickle}></div>
+        <div className={classes.pickle}></div>
         )
     }
 }
 export class Patty extends Component{
     render(){
         return(
-        <div class={classes.patty}></div>
+        <div className={classes.patty}></div>
         )
     }
 }
-export class Oignon extends Component{
+export class Onion extends Component{
     render(){
         return(
-        <div class={classes.onion}></div>
+        <div className={classes.onion}></div>
         )
     }
 }
 export class Meatball extends Component{
     render(){
         return(
-        <div class={classes.meatball}></div>
+        <div className={classes.meatball}></div>
         )
     }
 }
 export class Cheese extends Component{
     render(){
         return(
-        <div class={classes.cheese}></div>
+        <div className={classes.cheese}></div>
         )
     }
 }

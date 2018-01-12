@@ -61,7 +61,8 @@
   
   .plate {
     height: 25px;
-    width: 100%;
+    width: 80%;
+    margin:0 auto;
     background: #656565;
     border-radius: 20px 20px 200px 200px;
   } 

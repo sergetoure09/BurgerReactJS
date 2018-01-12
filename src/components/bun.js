@@ -5,7 +5,7 @@ import classes from '../ingredient.css'
 export class Bottom extends Component{
     render(){
         return(
-        <div class={classes.bunbottom}></div>
+        <div className={classes.bunbottom}></div>
         )
     }
 }
@@ -13,7 +13,7 @@ export class Bottom extends Component{
 export class Top extends Component{
     render(){
         return(
-        <div class={classes.buntop}></div>
+        <div className={classes.buntop}></div>
         )
     }
 }

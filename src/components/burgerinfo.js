@@ -6,7 +6,7 @@ class BurgerInfo extends Component{
         return(
             <div>
                 <h1>The {this.props.name}</h1>
-                <h2>Only {this.props.price}</h2>
+                <h2>Only ${this.props.price}</h2>
               
             </div>
         )
