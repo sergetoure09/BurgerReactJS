@@ -32,7 +32,7 @@ export class Patty extends Component{
         )
     }
 }
-export class Oignon extends Component{
+export class Onion extends Component{
     render(){
         return(
         <div class="oignon"></div>
