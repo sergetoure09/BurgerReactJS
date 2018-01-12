@@ -1,4 +1,4 @@
-.bun-top {
+.buntop {
     height: 70px;
     width: 60%;
     background: #e5b05a;
@@ -51,7 +51,7 @@
     border-top: dotted 20px rgba(255,255,255,.2);
   }
   
-  .bun-bottom {
+  .bunbottom {
     height: 35px;
     width: 60%;
     background: #e5b05a;
