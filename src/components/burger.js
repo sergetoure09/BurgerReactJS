@@ -7,9 +7,9 @@ class Burger extends PureComponent{
     render(){
         let ingredients=[]
         this.props.ingredients.map((ing,index) => { 
-            for(var i=1;i<=ing.quant;i++){ 
-            ingredients.push(ing.item)
-            } 
+           
+            ingredients.unshift(ing.item)
+            
             }
             )
         return(
