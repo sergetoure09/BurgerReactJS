@@ -15,7 +15,7 @@ h1 {
   text-align: center;
   margin: 0;
   padding: 5px 0;
-  background: #ea260d;
+  background: #EF2B5C;
   text-shadow: 0px 2px 0 rgba(0,0,0,.2);
   line-height: 100%;
   color: white;
@@ -35,9 +35,13 @@ h2 {
 .burger {
   max-width: 500px;
   margin: 0 auto;
+  max-height: 500px;
+  overflow-y: auto;
+  
 }
 
 /* This center-aligns all of the ingredients */
 .burger > div {
   margin: 0 auto;
+ 
 }

@@ -1,5 +1,7 @@
 import React,{PureComponent} from 'react'
 import Bread from'../components/bread'
+import style from '../style.css'
+import Aux from './aux'
 
 
 class Burger extends PureComponent{
@@ -13,11 +15,11 @@ class Burger extends PureComponent{
             }
             )
         return(
-            <React.Fragment>
-            <Bread> 
-            {ingredients}
-            </Bread>
-            </React.Fragment>
+            <Aux classes={style.burger}>
+                <Bread> 
+                    {ingredients}
+                </Bread>
+            </Aux>
         )
     }
 

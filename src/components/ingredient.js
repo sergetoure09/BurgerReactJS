@@ -10,7 +10,6 @@ export class Tomato extends Component{
     }
 }
 
-
 export class Pickle extends Component{
     render(){
         return(

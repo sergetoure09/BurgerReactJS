@@ -1,0 +1,27 @@
+.navitem{
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    height: 100%;
+    align-items: center;
+
+}
+
+.navitem a{
+    color:white;
+    text-decoration: none;
+    height: 100%;
+    padding: 16px 10px;
+    border-bottom: 4px solid transparent;
+    box-sizing: border-box;
+    display: block;
+    cursor: pointer;
+}
+
+.navitem a:hover,
+.navitem a:active,
+.navitem a.active{
+background-color: #ffeeee;
+border-bottom: 4px solid #1eaaeb;
+color: black
+}

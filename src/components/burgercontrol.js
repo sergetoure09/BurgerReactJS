@@ -11,7 +11,7 @@ class BurgerControl extends Component{
         return(
            <Aux classes={classes.boxControl}>
             <Controlpanel ingredients={this.props.ingredientsList} handleAdd={this.props.handleAdd} handleRemove={this.props.handleRemove}/>
-            <Checkoutbtn total={this.props.total}/>
+            <Checkoutbtn clickShowModal={this.props.clickShowModal} totalPrice={this.props.total} btnstate={this.props.btnstate}/>
            </Aux>
         )
     }

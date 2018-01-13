@@ -4,6 +4,10 @@ import Plate from '../components/plate'
 import BurgerControl from '../components/burgercontrol'
 import BurgerInfo from '../components/burgerinfo'
 import * as Ingredient from '../components/ingredient'
+import Modal from '../components/modal'
+import {OrderSummary} from '../components/ordersummary' 
+import Aux from '../components/aux'
+
 
 class BurgerBuilder extends Component {
     constructor(props) {
@@ -20,16 +24,37 @@ class BurgerBuilder extends Component {
 
             burger_ingredients: [],
           
-
+            showmodal:false,
             purchased: false,
+            notpurchasable:true
         }
+    }
+
+    clickShowModal=()=>{
+        this.setState(prevstate=>({
+            showmodal:prevstate.showmodal === false ? true : false
+        }))
+    }
+    ispurchasabled=(totalprice)=>{
+        if (totalprice>0){
+            this.setState({
+                notpurchasable:false
+            })
+        } else{
+            this.setState({
+                notpurchasable:true
+            })
+
+        }
+
     }
     clickReset = () => {
         let ingredientList = [...this.state.ingredientList]
         ingredientList.forEach(ing => ing.quant = 0)
         this.setState({
             ingredientList: ingredientList,
-            burger_ingredients: []
+            burger_ingredients: [],
+            notpurchasable:true
         })
     }
     clickAdd = (id) => {
@@ -43,8 +68,10 @@ class BurgerBuilder extends Component {
         } else { ingredientList[index].quant = 5 }
         this.setState({
             ingredientList: ingredientList,
-            burger_ingredients: ingredients
+            burger_ingredients: ingredients,
+            notpurchasable:false
         })
+       
     }
 
     clickRemove = (id) => {
@@ -61,6 +88,10 @@ class BurgerBuilder extends Component {
             })
         }
 
+        let totalPrice = 0
+        this.state.ingredientList.map((ing) => { totalPrice += ing.quant * ing.uprice })
+        this.ispurchasabled(totalPrice)
+
 
     }
 
@@ -68,15 +99,18 @@ class BurgerBuilder extends Component {
     render() {
         let totalPrice = 0
         this.state.ingredientList.map((ing) => { totalPrice += ing.quant * ing.uprice })
+        let modal=this.state.showmodal===true ? <Modal><h1>Your Order Summary!</h1><OrderSummary ingredients={this.state.ingredientList} totalPrice={totalPrice}/></Modal>:null
+      
 
         return (
-            <React.Fragment>
+            <Aux>
+                {modal}
                 <BurgerInfo name="Best Whooper" price={totalPrice} />
                 <Burger ingredients={[...this.state.burger_ingredients]} />
                 <Plate />
                 <button onClick={this.clickReset}>Reset</button>
-                <BurgerControl ingredientsList={this.state.ingredientList} total={totalPrice} handleAdd={this.clickAdd} handleRemove={this.clickRemove} />
-            </React.Fragment>
+                <BurgerControl  clickShowModal={this.clickShowModal} btnstate={this.state.notpurchasable} ingredientsList={this.state.ingredientList} total={totalPrice} handleAdd={this.clickAdd} handleRemove={this.clickRemove} />
+            </Aux>
         )
     }
 }
