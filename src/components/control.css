@@ -1,0 +1,7 @@
+.boxControl{
+    width: 700px;
+    border: 1px solid black;
+    height: 400px;
+    margin:10px auto;
+    padding:20px;
+}

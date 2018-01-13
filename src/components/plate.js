@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import classes from '../ingredient.css'
 
 class Plate extends Component{
     render(){
         return(
-        <div class="plate"></div>
+        <div className={classes.plate}>
+        </div>
     )
     }
 }

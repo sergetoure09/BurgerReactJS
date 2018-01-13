@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
-import BunTop from './bun-top'
-import BunBottom from './bun-bottom'
+import style from '../style.css'
+import * as Bun from './bun'
+import Aux from './aux'
 
 
 class Bread extends Component{
 
     render(){
         return(
-            <div class="burger">
-                <BunTop />
+            <Aux classes={style.burger}>
+                <Bun.Top />
                 {this.props.children}
-                <BunBottom />
-            </div>
+                <Bun.Bottom />
+            </Aux>
         )
     }
 }

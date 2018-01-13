@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import './style.css'
-import Bread from'./components/bread'
-import * as Ingredient from './components/ingredient'
-import Plate from './components/plate'
-import BurgerInfo from'./components/burgerinfo'
+import classes from './App.css';
+import BurgerBuilder from './containers/burgerbuilder'
+import Aux from './components/aux'
+
 
 class App extends Component {
   constructor(props){

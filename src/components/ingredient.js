@@ -1,55 +1,48 @@
 import React, {Component} from 'react'
-import '../ingredient.css'
+import classes from '../ingredient.css'
 
 
 export class Tomato extends Component{
     render(){
         return(
-        <div class="tomato"></div>
+        <div className={classes.tomato}></div>
     )
     }
 }
 
-export class Plate extends Component{
-    render(){
-        return(
-        <div class="plate"></div>
-    )
-    }
-}
 
 export class Pickle extends Component{
     render(){
         return(
-        <div class="pickle"></div>
+        <div className={classes.pickle}></div>
         )
     }
 }
 export class Patty extends Component{
     render(){
         return(
-        <div class="patty"></div>
+        <div className={classes.patty}></div>
         )
     }
 }
 export class Onion extends Component{
     render(){
         return(
-        <div class="oignon"></div>
+        <div className={classes.onion}></div>
         )
     }
 }
 export class Meatball extends Component{
     render(){
         return(
-        <div class="meatball"></div>
+        <div className={classes.meatball}></div>
         )
     }
 }
 export class Cheese extends Component{
     render(){
         return(
-        <div class="cheese"></div>
+        <div className={classes.cheese}></div>
         )
     }
 }
