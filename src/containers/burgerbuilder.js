@@ -18,7 +18,7 @@ class BurgerBuilder extends Component {
                 { id: 'meat', name: 'meatball', uprice: 3, quant: 0, item: <Ingredient.Meatball /> }],
 
 
-            ingredients: [],
+            burger_ingredients: [],
           
 
             purchased: false,
@@ -29,13 +29,13 @@ class BurgerBuilder extends Component {
         ingredientList.forEach(ing => ing.quant = 0)
         this.setState({
             ingredientList: ingredientList,
-            ingredients: []
+            burger_ingredients: []
         })
     }
     clickAdd = (id) => {
         const max = 5
         var ingredientList = [...this.state.ingredientList]
-        var ingredients = [...this.state.ingredients]
+        var ingredients = [...this.state.burger_ingredients]
         var index = ingredientList.findIndex(ing => ing.id === id)
         if (ingredientList[index].quant < max) {
             ingredients.push(ingredientList[index])
@@ -43,21 +43,21 @@ class BurgerBuilder extends Component {
         } else { ingredientList[index].quant = 5 }
         this.setState({
             ingredientList: ingredientList,
-            ingredients: ingredients
+            burger_ingredients: ingredients
         })
     }
 
     clickRemove = (id) => {
 
         var ingredientList = [...this.state.ingredientList]
-        var ingredients = [...this.state.ingredients]
+        var ingredients = [...this.state.burger_ingredients]
         var index = ingredients.findIndex(ing => ing.id === id)
         if (index !== -1) {
             ingredients.splice(index, 1)
             ingredientList[ingredientList.findIndex(ing => ing.id === id)].quant -= 1
             this.setState({
                 ingredientList: ingredientList,
-                ingredients: ingredients
+                burger_ingredients: ingredients
             })
         }
 
@@ -72,7 +72,7 @@ class BurgerBuilder extends Component {
         return (
             <React.Fragment>
                 <BurgerInfo name="Best Whooper" price={totalPrice} />
-                <Burger ingredients={[...this.state.ingredients]} />
+                <Burger ingredients={[...this.state.burger_ingredients]} />
                 <Plate />
                 <button onClick={this.clickReset}>Reset</button>
                 <BurgerControl ingredientsList={this.state.ingredientList} total={totalPrice} handleAdd={this.clickAdd} handleRemove={this.clickRemove} />
