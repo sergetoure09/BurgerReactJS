@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import Burger from '../components/burger'
-import Plate from '../components/plate'
-import BurgerControl from '../components/burgercontrol'
-import BurgerInfo from '../components/burgerinfo'
-import * as Ingredient from '../components/ingredient'
-import Modal from '../components/modal'
-import {OrderSummary} from '../components/ordersummary' 
-import Aux from '../components/aux'
+import  React, { Component } from 'react'
+import  Burger from '../components/burger'
+import  Plate from '../components/plate'
+import  BurgerControl from '../components/burgercontrol'
+import  BurgerInfo from '../components/burgerinfo'
+import  * as Ingredient from '../components/ingredient'
+import  Modal from '../components/modal'
+import  {OrderSummary} from '../components/ordersummary' 
+import  Aux from '../components/aux'
 
 
 class BurgerBuilder extends Component {
@@ -23,17 +23,26 @@ class BurgerBuilder extends Component {
 
 
             burger_ingredients: [],
-          
+           
             showmodal:false,
             purchased: false,
             notpurchasable:true
         }
     }
 
+    clickRemoveDrop=()=>{
+        this.setState({
+            showmodal:false
+          
+        })
+
+    }
+
     clickShowModal=()=>{
-        this.setState(prevstate=>({
-            showmodal:prevstate.showmodal === false ? true : false
-        }))
+        this.setState({
+            showmodal:true
+          
+        })
     }
     ispurchasabled=(totalprice)=>{
         if (totalprice>0){
@@ -54,7 +63,8 @@ class BurgerBuilder extends Component {
         this.setState({
             ingredientList: ingredientList,
             burger_ingredients: [],
-            notpurchasable:true
+            notpurchasable:true,
+            showmodal:false
         })
     }
     clickAdd = (id) => {
@@ -99,11 +109,15 @@ class BurgerBuilder extends Component {
     render() {
         let totalPrice = 0
         this.state.ingredientList.map((ing) => { totalPrice += ing.quant * ing.uprice })
-        let modal=this.state.showmodal===true ? <Modal><h1>Your Order Summary!</h1><OrderSummary ingredients={this.state.ingredientList} totalPrice={totalPrice}/></Modal>:null
+        let modal=this.state.showmodal===true ? <Modal show={this.state.showmodal} clickdrop={this.clickRemoveDrop}>
+                                                                <h1>Your Order Summary!</h1>
+                                                                <OrderSummary reset={this.clickReset} clickdrop={this.clickRemoveDrop} ingredients={this.state.ingredientList} totalPrice={totalPrice}/>
+                                                </Modal>
+                                                :null
       
 
         return (
-            <Aux>
+            <Aux >
                 {modal}
                 <BurgerInfo name="BURGER MAGIC" price={totalPrice} />
                 <Burger ingredients={[...this.state.burger_ingredients]} />

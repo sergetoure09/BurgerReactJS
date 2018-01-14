@@ -29,7 +29,11 @@ export const OrderSummary=props=>{
           </thead>
               {items}
               </table>
-              <button style={style} >CKECKOUT NOW!<br/>$ {props.totalPrice}</button>
+              <nav>
+                  <a href='#' onClick={props.clickdrop}>Continue</a> <a href='#' onClick={props.reset}>Abort</a> <hr/>
+                  <button style={style} >CKECKOUT NOW!<br/>$ {props.totalPrice}</button>
+                  </nav>
+              
         </Aux>
         
     )
