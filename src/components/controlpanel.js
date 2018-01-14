@@ -8,6 +8,7 @@ class Controlpanel extends Component{
   render(){
       let items=this.props.ingredients.map((ing,index)=> <ControlItem 
                                                                     key={ing.id} 
+                                                                    keey={ing.id} 
                                                                     name={ing.name} 
                                                                     uprice={ing.uprice} 
                                                                     quant={ing.quant} 

@@ -3,7 +3,7 @@ import classes from './App.css';
 import BurgerBuilder from './containers/burgerbuilder'
 import Aux from './components/aux'
 import {Toolbar} from './components/Navigation/Toolbar/toolbar'
-import sideDrawer from './components/Navigation/sidedrawer/sidedrawer'
+import SideDrawer from './components/Navigation/sidedrawer/sidedrawer'
 
 
 class App extends Component {
@@ -12,7 +12,7 @@ class App extends Component {
      return (
     <Aux classes={classes.App}>
     <Toolbar/>
-    <sideDrawer />
+    <SideDrawer />
     <BurgerBuilder />
     </Aux>
     

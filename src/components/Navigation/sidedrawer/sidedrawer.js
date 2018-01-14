@@ -5,18 +5,17 @@ import classes from './sidedrawer.css'
 
 
 
-const sideDrawer=props=>{
+const SideDrawer=props=>{
 
 
     return(
        <div className={classes.sidedrawer}>
            <Logo />
-           <nav>
-              
-               <NavItems/>
-            </nav>
+           
+               <NavItems />
+           
 
        </div>
     )
 }
-export default sideDrawer
+export default SideDrawer

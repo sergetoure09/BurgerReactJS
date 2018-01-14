@@ -10,7 +10,7 @@ export const NavItem=props=>{
 
     return(
         <li className={classes.navitem}>
-                <a href={props.ref}>{props.label}</a>
+                <a href={props.reef}>{props.label}</a>
         </li>
     )
   

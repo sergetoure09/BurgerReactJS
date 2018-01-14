@@ -18,7 +18,7 @@ export class NavItems extends Component{
     }
     render(){
         let items=this.state.links.map((link,index)=>(
-            <NavItem key={index} label={link.label} ref={link.ref} />
+            <NavItem key={index} label={link.label} reef={link.ref} />
     
         ))
         return(
