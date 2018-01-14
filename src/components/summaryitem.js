@@ -10,7 +10,7 @@ class SummaryItem extends Component{
             <tr>
              <td>{this.props.name}</td>
              <td>{this.props.quant}</td>
-             <td>{this.props.uprice}</td>
+             <td>${this.props.uprice}</td>
             </tr>
             </tbody>
             

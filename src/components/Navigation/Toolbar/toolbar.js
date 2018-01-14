@@ -8,8 +8,8 @@ import Navitems, { NavItems } from '../NavigationItems/navigationitems'
 export const Toolbar=props=>{
     return(
         <header className={classes.toolbar}>
+         <div>MENU</div>
             <Logo />
-            <div>BUILDER</div>
             <NavItems />
          </header>
     )

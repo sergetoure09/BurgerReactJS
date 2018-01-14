@@ -7,7 +7,7 @@ class BurgerInfo extends Component{
     render(){
         return(
             <Aux classes={classes.info}>
-                <h1>The {this.props.name}</h1>
+                
                 <h2>Only ${this.props.price}</h2>
               
             </Aux>

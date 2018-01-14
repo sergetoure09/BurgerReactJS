@@ -12,7 +12,7 @@ class ControlItem extends Component{
              <td><ButtonAdd ClickAdd={()=>this.props.handleAdd(this.props.key)} key={this.props.key}/></td>
              <td><ButtonRemove ClickRemove={()=>this.props.handleRemove(this.props.key)} key={this.props.key}/></td>
              <td>{this.props.quant}</td>
-             <td>{this.props.uprice}</td>
+             <td>${this.props.uprice}</td>
             </tr>
             </tbody>
             

@@ -105,7 +105,7 @@ class BurgerBuilder extends Component {
         return (
             <Aux>
                 {modal}
-                <BurgerInfo name="Best Whooper" price={totalPrice} />
+                <BurgerInfo name="BURGER MAGIC" price={totalPrice} />
                 <Burger ingredients={[...this.state.burger_ingredients]} />
                 <Plate />
                 <button onClick={this.clickReset}>Reset</button>
