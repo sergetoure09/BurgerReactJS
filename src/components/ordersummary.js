@@ -31,7 +31,7 @@ export const OrderSummary=props=>{
               </table>
               <nav>
                   <a href='#' onClick={props.clickdrop}>Continue</a> <a href='#' onClick={props.reset}>Abort</a> <hr/>
-                  <button style={style} >CKECKOUT NOW!<br/>$ {props.totalPrice}</button>
+                  <button style={style} onClick={()=>{console.log("payment server...")}}>CKECKOUT NOW!<br/>$ {props.totalPrice}</button>
                   </nav>
               
         </Aux>
