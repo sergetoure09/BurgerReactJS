@@ -7,6 +7,9 @@ import  * as Ingredient from '../components/ingredient'
 import  Modal from '../components/modal'
 import  {OrderSummary} from '../components/ordersummary' 
 import  Aux from '../components/aux'
+import axios from '../components/axios-order-instace'
+import {Spinner} from '../components/spinner'
+import Errorhandler from '../components/errorhandler_hoc'
 
 
 class BurgerBuilder extends Component {
@@ -26,7 +29,9 @@ class BurgerBuilder extends Component {
            
             showmodal:false,
             purchased: false,
-            notpurchasable:true
+            notpurchasable:true,
+            totalPrice:null,
+            showspinner:false
         }
     }
 
@@ -57,6 +62,29 @@ class BurgerBuilder extends Component {
         }
 
     }
+    purchaseHandler=()=>{
+        //alert("sent to firebase...")
+        this.setState({
+            showspinner:true
+        })
+        const order={
+            ingredients:this.state.ingredientList,
+            price:this.state.totalPrice,
+            customer:"Serge Toure",
+            address:{
+                street:"Maarif casablanca Res Meryem Bd Anfa",
+                zipcode:'200610',
+                country:'Ivory Coast'   
+            },
+            email:'sergetoure09@gmail.com',
+            deliverymethod:'fastest'
+
+        }
+        axios.post('Orders.json',order).then(resp=>{this.setState({
+            showspinner:false,showmodal:false
+        })}).catch(err=>{this.setState({showspinner:false,showmodal:false})})
+
+    }
     clickReset = () => {
         let ingredientList = [...this.state.ingredientList]
         ingredientList.forEach(ing => ing.quant = 0)
@@ -68,6 +96,7 @@ class BurgerBuilder extends Component {
         })
     }
     clickAdd = (id) => {
+        let totalPrice = 0
         const max = 5
         var ingredientList = [...this.state.ingredientList]
         var ingredients = [...this.state.burger_ingredients]
@@ -76,10 +105,15 @@ class BurgerBuilder extends Component {
             ingredients.push(ingredientList[index])
             ingredientList[index].quant += 1
         } else { ingredientList[index].quant = 5 }
+       
+        this.state.ingredientList.map((ing) => { 
+            totalPrice += ing.quant * ing.uprice 
+        })
         this.setState({
             ingredientList: ingredientList,
             burger_ingredients: ingredients,
-            notpurchasable:false
+            notpurchasable:false,
+            totalPrice:totalPrice
         })
        
     }
@@ -107,11 +141,14 @@ class BurgerBuilder extends Component {
 
 
     render() {
-        let totalPrice = 0
-        this.state.ingredientList.map((ing) => { totalPrice += ing.quant * ing.uprice })
+        
         let modal=this.state.showmodal===true ? <Modal show={this.state.showmodal} clickdrop={this.clickRemoveDrop}>
                                                                 <h1>Your Order Summary!</h1>
-                                                                <OrderSummary reset={this.clickReset} clickdrop={this.clickRemoveDrop} ingredients={this.state.ingredientList} totalPrice={totalPrice}/>
+                                                                {!this.state.showspinner ?
+                                                                <OrderSummary purchasehandler={this.purchaseHandler} 
+                                                                                reset={this.clickReset} clickdrop={this.clickRemoveDrop} 
+                                                                                ingredients={this.state.ingredientList} 
+                                                                                totalPrice={this.state.totalPrice}/>:<Spinner/>}
                                                 </Modal>
                                                 :null
       
@@ -119,13 +156,13 @@ class BurgerBuilder extends Component {
         return (
             <Aux >
                 {modal}
-                <BurgerInfo name="BURGER MAGIC" price={totalPrice} />
+                <BurgerInfo name="BURGER MAGIC" price={this.state.totalPrice} />
                 <Burger ingredients={[...this.state.burger_ingredients]} />
                 <Plate />
                 <button onClick={this.clickReset}>Reset</button>
-                <BurgerControl  clickShowModal={this.clickShowModal} btnstate={this.state.notpurchasable} ingredientsList={this.state.ingredientList} total={totalPrice} handleAdd={this.clickAdd} handleRemove={this.clickRemove} />
+                <BurgerControl  clickShowModal={this.clickShowModal} btnstate={this.state.notpurchasable} ingredientsList={this.state.ingredientList} total={this.state.totalPrice} handleAdd={this.clickAdd} handleRemove={this.clickRemove} />
             </Aux>
         )
     }
 }
-export default BurgerBuilder
+export default Errorhandler(BurgerBuilder,axios)

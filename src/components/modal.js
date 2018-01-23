@@ -11,7 +11,7 @@ const Modal=props=>{
             
         <Aux>
             <Backdrop show={props.show} clicked={props.clickdrop}/>
-             <div className={classes.modal} style={{transform: props.show ? 'translateY(0)':'translateY(-100px)',opacity:props.show ? '1':'0'}}>
+             <div className={classes.modal} style={{transform: props.show ? 'scale(1.1,1.1)':'translateY(-100px)',opacity:props.show ? '1':'0'}}>
             {props.children}
              </div>
             
