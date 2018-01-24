@@ -10,6 +10,7 @@ import  Aux from '../components/aux'
 import axios from '../components/axios-order-instace'
 import {Spinner} from '../components/spinner'
 import Errorhandler from '../components/errorhandler_hoc'
+import Checkoutform from '../components/checkoutform'
 
 
 class BurgerBuilder extends Component {
@@ -63,28 +64,38 @@ class BurgerBuilder extends Component {
 
     }
     purchaseHandler=()=>{
-        //alert("sent to firebase...")
-        this.setState({
-            showspinner:true
-        })
-        const order={
-            ingredients:this.state.ingredientList,
-            price:this.state.totalPrice,
-            customer:"Serge Toure",
-            address:{
-                street:"Maarif casablanca Res Meryem Bd Anfa",
-                zipcode:'200610',
-                country:'Ivory Coast'   
-            },
-            email:'sergetoure09@gmail.com',
-            deliverymethod:'fastest'
+        // const queryParams=[] // empty array in witch we push params as list items
+        // for (let i in this.state.burger_ingredients){
+        //     queryParams.push(encodeURIComponent(i.name)+'='+encodeURIComponent(i.quant))
+        // } // encode params with the special method encodeURIComponent and push items in queryParams 
+        // const queryString=queryParams.join('&')
+    this.props.history.push({
+        pathname:this.props.match.url+'checkout',
+        hash:'',
+        state:{ingredients:this.state.ingredientList}
+        // //alert("sent to firebase...")
+        // this.setState({
+        //     showspinner:true
+        // })
+        // const order={
+        //     ingredients:this.state.ingredientList,
+        //     price:this.state.totalPrice,
+        //     customer:"Serge Toure",
+        //     address:{
+        //         street:"Maarif casablanca Res Meryem Bd Anfa",
+        //         zipcode:'200610',
+        //         country:'Ivory Coast'   
+        //     },
+        //     email:'sergetoure09@gmail.com',
+        //     deliverymethod:'fastest'
 
-        }
-        axios.post('Orders.json',order).then(resp=>{this.setState({
-            showspinner:false,showmodal:false
-        })}).catch(err=>{this.setState({showspinner:false,showmodal:false})})
+        // }
+        // axios.post('Orders.json',order).then(resp=>{this.setState({
+        //     showspinner:false,showmodal:false
+        // })}).catch(err=>{this.setState({showspinner:false,showmodal:false})})
 
-    }
+    })
+}
     clickReset = () => {
         let ingredientList = [...this.state.ingredientList]
         ingredientList.forEach(ing => ing.quant = 0)
@@ -138,6 +149,9 @@ class BurgerBuilder extends Component {
 
 
     }
+    componentDidMount(){
+        console.log(this.props)
+    }
 
 
     render() {
@@ -160,7 +174,8 @@ class BurgerBuilder extends Component {
                 <Burger ingredients={[...this.state.burger_ingredients]} />
                 <Plate />
                 <button onClick={this.clickReset}>Reset</button>
-                <BurgerControl  clickShowModal={this.clickShowModal} btnstate={this.state.notpurchasable} ingredientsList={this.state.ingredientList} total={this.state.totalPrice} handleAdd={this.clickAdd} handleRemove={this.clickRemove} />
+                <BurgerControl  clickShowModal={this.clickShowModal} btnstate={this.state.notpurchasable} ingredientsList={this.state.ingredientList} total={this.state.totalPrice} handleAdd={this.clickAdd} handleRemove={this.clickRemove}/>
+              
             </Aux>
         )
     }

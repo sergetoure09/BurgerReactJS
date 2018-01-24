@@ -8,12 +8,7 @@ class Burger extends PureComponent{
  
     render(){
         let ingredients=[]
-        this.props.ingredients.map((ing,index) => { 
-           
-            ingredients.unshift(ing.item)
-            
-            }
-            )
+        this.props.ingredients.map((ing,index) => { ingredients.unshift(ing.item)})
         return(
             <Aux classes={style.burger}>
                 <Bread> 
