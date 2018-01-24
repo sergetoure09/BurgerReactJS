@@ -1,6 +1,7 @@
 import React from 'react'
 import Aux from './aux'
 import SummaryItem from './summaryitem'
+import Button from './button'
 
 
 export const OrderSummary=props=>{
@@ -30,8 +31,8 @@ export const OrderSummary=props=>{
               {items}
               </table>
               <nav>
-                  <a href='/' onClick={props.clickdrop}>Continue</a> 
-                  <a href='/' onClick={props.reset}>Abort</a> <hr/>
+                  <Button btnType='success' clicked={props.clickdrop}>Continue</Button> 
+                  <Button btnType='danger' clicked={props.reset}>Abort</Button> <hr/>
                   <button style={style} onClick={props.purchasehandler}>CKECKOUT NOW!<br/>$ {props.totalPrice}</button>
                   </nav>
               

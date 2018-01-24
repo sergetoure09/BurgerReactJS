@@ -10,7 +10,7 @@ import  Aux from '../components/aux'
 import axios from '../components/axios-order-instace'
 import {Spinner} from '../components/spinner'
 import Errorhandler from '../components/errorhandler_hoc'
-import Checkoutform from '../components/checkoutform'
+
 
 
 class BurgerBuilder extends Component {
@@ -72,7 +72,7 @@ class BurgerBuilder extends Component {
     this.props.history.push({
         pathname:this.props.match.url+'checkout',
         hash:'',
-        state:{ingredients:this.state.ingredientList}
+        ingredients:this.state.burger_ingredients
         // //alert("sent to firebase...")
         // this.setState({
         //     showspinner:true

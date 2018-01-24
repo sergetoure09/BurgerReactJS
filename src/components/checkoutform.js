@@ -12,32 +12,35 @@ class Checkoutform extends Component{
         super(props);
    
     this.state={
-        ingredients:[
-            { id: 'ches', name: 'cheese', uprice: 4, quant: 0, item: <Ingredient.Cheese /> },
-            { id: 'toma', name: 'tomato', uprice: 1, quant: 0, item: <Ingredient.Tomato /> },
-            { id: 'paty', name: 'patty', uprice: 5, quant: 0, item: <Ingredient.Patty /> },
-            { id: 'pick', name: 'pickle', uprice: 1, quant: 0, item: <Ingredient.Pickle /> },
-            { id: 'onio', name: 'oignon', uprice: 1, quant: 0, item: <Ingredient.Onion /> },
-            { id: 'meat', name: 'meatball', uprice: 3, quant: 0, item: <Ingredient.Meatball /> }]
+        ingredients:[]
 
     }
 }
 
     componentDidMount(){
+
         console.log(this.props)
-         this.setState({
-             ingredients:this.props.location.state.ingredients
-        })
-        // console.log(this.props.location.setate.burger_ingredients)
+        let ingredients=this.props.location.ingredients
+        if(ingredients){
+            this.setState({
+                ingredients:ingredients
+
+            })
+        }
+        // console.log(this.props)
+        //  this.setState({
+        //      ingredients:this.props.location.state.ingredients
+        // })
+        // // console.log(this.props.location.setate.burger_ingredients)
         //     let data=new URLSearchParams(decodeURIComponent(this.props.location.search))
         //     for (let params in data.entries()){
         //         console.log(params) then set the state 
             
-        // }
+        }
         
-    }
+    
     success=()=>{
-        this.props.history.replace({pathname:'/checkout/contact-info'})
+        this.props.history.replace({pathname:this.props.match.url+'/contact-data'})
     
         // redirection same as <Redirect to='checkout/contact-info/>
         
@@ -48,15 +51,17 @@ class Checkoutform extends Component{
 
     }
 
-
-
     render(){
+        let data=<h1>No Data!</h1>
+        if(this.state.ingredients){
+            data=<CheckoutSummary 
+            ingredients={this.state.ingredients}
+            successHandler={this.success}
+            cancelHandler={this.cancel}/>
+        }
         return(
                     <Aux classes={classes.checkform}>
-                        <CheckoutSummary 
-                            ingredients={[...this.state.ingredients]}
-                            successHandler={this.props.success}
-                            cancelHandler={this.props.cancel}/>
+                        {data}
                      </Aux>
         )
     }
